@@ -4,28 +4,17 @@
 <body>
     <div id="root"></div>
 </body>
-
-<!-- 리엑트 임포트 -->
 <script src="https://www.unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-
-<!-- react-dom은 리엑트 엘리먼트를 HTML로 바꾸기 위해 필요함 -->
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-
-<!-- BABEL 임포트 -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
 <script type="text/babel">
-    const root = document.getElementById("root"); //HTML에서 id가 root인 블록을 가져옴
+    const root = document.getElementById("root");
 
     function APP() {
-        const [counter, setCounter] = React.useState(0); // useStates는 리턴값이 리스트인데 첫번째 원소는 변수의 값이고 두번째는 그 값을 변화시키는 함수이다
+        const [counter, setCounter] = React.useState(0);
         const onClick = () =>{
-            setCounter(counter + 1);
-            /*
-            counter += counter;
-            ReactDOM.render(<APP />, root);
-            //setCounter는 위 두줄을 한줄로 쓸수 있게 해준다
-            */
+            // setCounter(counter + 1);
+            setCounter((current)=> current+1)
         }
         return(
             <div>
