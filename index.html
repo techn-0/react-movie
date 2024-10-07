@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>리엑트를 공부하자</title>
-</head>
-
 <body>
-
+    <div id="root"></div>
 </body>
 
 <!-- 리엑트 임포트 -->
 <script src="https://www.unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+
 <!-- react-dom은 리엑트 엘리먼트를 HTML로 바꾸기 위해 필요함 -->
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+<!-- BABEL 임포트 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); //HTML에서 id가 root인 블록을 가져옴
+    const Title = 
+        <h3 id="title" onMouseEnter={() => console.log("마우스 엔터")}>
+            안녕하세여
+        </h3>
+    ;
+    const Button = <button
+        style={{backgroundColor: "tomato"}}
+        onClick={() => console.log("눌렀다")}
+    >
+        나를 눌러요
+    </button>
+    const container = React.createElement("div", null, [Title, Button]);// 두 원소를 한번에 출력하는 법
+
+    ReactDOM.render(container, root); // render : 사용자에게 보여준다 즉 html에 띄워준다?
+</script>
 
 </html>
