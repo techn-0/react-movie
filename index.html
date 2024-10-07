@@ -2,21 +2,25 @@
 <html>
 
 <body>
-    <span>누른 횟수: 0</span>
-    <br>
-    <button id = "btn">Click me</button>
+    <div id="root"></div>
 </body>
 
+<script src="https://www.unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 <script>
-    let counter = 0;
-    const button = document.getElementById("btn");
-    const span = document.querySelector("span");
+    const root = document.getElementById("root");
+    const h3 = React.createElement("h3", {
+        onMouseEnter: () => console.log("마우스 엔터")
+    }, "안녕하세여"); // 리엑트로 엘리먼트를 생성함
+    const btn = React.createElement(
+        "button",
+        {onClick: () => console.log("눌렀다")},
+        "나를 눌러요"
+    );
 
-    function handleClick() {
-        counter += 1;
-        span.innerText = `누른 횟수: ${counter}`;
-    }
-    button.addEventListener("click", handleClick);
+    const container = React.createElement("div", null, [h3, btn]);// 두 원소를 한번에 출력하는 법
+
+    ReactDOM.render(container, root); // render : 사용자에게 보여준다 즉 html에 띄워준다?
 </script>
 
 </html>
