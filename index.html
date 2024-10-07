@@ -16,24 +16,26 @@
 
 <script type="text/babel">
     const root = document.getElementById("root"); //HTML에서 id가 root인 블록을 가져옴
-    const Title = () =>
-        <h3 id="title" onMouseEnter={() => console.log("마우스 엔터")}>
-            안녕하세여
-        </h3>
-        ;
-    const Button = () => <button
-        style={{backgroundColor: "tomato"}}
-        onClick={() => console.log("눌렀다")}
-    >
-        나를 눌러요
-    </button>
-    const Container =() =>
-        <div>
-            <Title />
-            <Button />
-        </div>;// 두 원소를 한번에 출력하는 법
 
-    ReactDOM.render(<Container />, root); // render : 사용자에게 보여준다 즉 html에 띄워준다?
+    function APP() {
+        const [counter, setCounter] = React.useState(0); // useStates는 리턴값이 리스트인데 첫번째 원소는 변수의 값이고 두번째는 그 값을 변화시키는 함수이다
+        const onClick = () =>{
+            setCounter(counter + 1);
+            /*
+            counter += counter;
+            ReactDOM.render(<APP />, root);
+            //setCounter는 위 두줄을 한줄로 쓸수 있게 해준다
+            */
+        }
+        return(
+            <div>
+            <h3>누른 횟수: {counter}</h3>
+            <button onClick = {onClick}>나를 눌러요</button>
+        </div>
+        );
+    }
+    ReactDOM.render(<APP />, root);
+
 </script>
 
 </html>
