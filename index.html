@@ -10,7 +10,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 
-    function Btn({text, fontSize}) {
+    function Btn({text, fontSize = 14}) {
         return <button
             style={{
                 backgroundColor: "tomato",
@@ -23,7 +23,7 @@
             {text}
         </button>
     }
-    Btn.propTypes ={
+    Btn.propTypes = {
         text: PropTypes.string,
         fontSize: PropTypes.number,
     }
