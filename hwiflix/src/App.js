@@ -1,29 +1,24 @@
 import { useState, useEffect } from "react";
+
+function Hello() {
+  function DestroyedFn() {
+    console.log("Destroyed");
+  }
+  function CreatedFn() {
+    console.log("Created");
+    return DestroyedFn;
+  }
+  useEffect(CreatedFn, []);
+  return <h1>Hello</h1>;
+}
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-
-  useEffect(() => {
-    console.log("Call the API");
-  }, []); //처음 한번만 렌더할 함수는 이곳에 넣어준다
-
-  useEffect(() => {
-    if (keyword !== "" && keyword.length > 6) {
-      console.log("SERACH", keyword);
-    }
-  }, [keyword]); // keyword가 바뀔때만 실행
-
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing((prev) => !prev);
   return (
     <div>
-      <input 
-      value={keyword}
-      onChange={onChange} 
-      type="text" 
-      placeholder="Serch"/>
-      <h1>{counter}</h1>
-      <button onClick={onClick}>나를 눌러요</button>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
